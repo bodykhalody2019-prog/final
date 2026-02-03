@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم جوجي - Amr Diab Edition</title>
+    <title>عالم جوجي الخاص ❤️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Dancing+Script:wght@700&display=swap');
 
@@ -11,7 +11,7 @@
             --primary: #ff4d6d;
             --accent: #00d4ff;
             --dark-bg: #0d0118;
-            --glass: rgba(255, 255, 255, 0.1);
+            --glass: rgba(255, 255, 255, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,17 +21,15 @@
             background-color: var(--dark-bg);
             color: white;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        #bg-canvas {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-        }
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
         #login-screen {
             position: fixed; inset: 0; background: var(--dark-bg);
             display: flex; justify-content: center; align-items: center; z-index: 10000;
-            transition: 0.8s ease-out;
+            transition: 1s ease-in-out;
         }
 
         .login-card {
@@ -52,11 +50,11 @@
             cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s;
         }
 
-        #main-content { display: none; padding: 20px; }
+        #main-content { display: none; }
 
         section {
             min-height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; margin-bottom: 50px;
+            justify-content: center; align-items: center; padding: 60px 20px;
         }
 
         .glass-box {
@@ -65,33 +63,57 @@
             width: 100%; max-width: 700px; text-align: center;
         }
 
-        /* تنسيق الفيديو */
+        /* العداد */
+        .timer-wrap { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+        .t-node { background: rgba(0,0,0,0.5); padding: 15px; border-radius: 15px; min-width: 70px; border-bottom: 3px solid var(--primary); }
+        .t-node span { display: block; font-size: 2rem; color: var(--primary); font-weight: bold; }
+
+        /* الفيديو */
         .video-container {
-            position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            position: relative; width: 100%; padding-bottom: 56.25%;
             height: 0; overflow: hidden; border-radius: 15px; margin-top: 20px;
             border: 2px solid var(--primary);
         }
-        .video-container iframe {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+        /* قسم الوعود (المستوحى من الصورة) */
+        .promises-container {
+            width: 100%; max-width: 500px; margin-top: 40px; display: flex; flex-direction: column; gap: 15px;
+        }
+        .promise-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px; padding: 20px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: 0.3s;
+        }
+        .promise-card:hover { transform: scale(1.02); background: rgba(255, 77, 109, 0.1); }
+        .promise-text { font-size: 1.2rem; color: #eee; font-weight: 500; }
+        .promise-icon { font-size: 1.5rem; color: #ffca28; }
+
+        /* معرض الصور */
         .gallery {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px; width: 100%; margin-top: 20px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px; width: 100%; max-width: 1000px; margin-top: 30px;
+        }
+        .photo-card { height: 350px; perspective: 1000px; opacity: 0; transform: translateY(30px); transition: 1s all ease; }
+        .photo-card.reveal { opacity: 1; transform: translateY(0); }
+        .photo-inner { width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
+        .photo-card.flipped .photo-inner { transform: rotateY(180deg); }
+        .face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; overflow: hidden; border: 2px solid var(--primary); }
+        .face img { width: 100%; height: 100%; object-fit: cover; }
+        .face.back {
+            background: var(--primary); transform: rotateY(180deg);
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px; font-size: 1.3rem; text-align: center; font-weight: bold;
         }
 
-        .img-card {
-            height: 250px; border-radius: 15px; overflow: hidden;
-            position: relative; border: 2px solid var(--primary);
-        }
+        #love-message-section { display: none; margin-top: 40px; }
+        #typing-box { font-size: 1.4rem; line-height: 1.8; color: #fff; }
 
-        .img-card img { width: 100%; height: 100%; object-fit: cover; }
+        .pulse-btn { animation: pulse 2s infinite; margin-top: 30px; }
+        @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.05);} 100% {transform: scale(1);} }
 
-        .timer-wrap { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
-        .t-node { background: rgba(0,0,0,0.4); padding: 10px; border-radius: 10px; min-width: 60px; }
-        .t-node span { display: block; font-size: 1.5rem; color: var(--primary); font-weight: bold; }
-
-        #typing-box { font-size: 1.3rem; line-height: 1.6; min-height: 100px; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -100,16 +122,16 @@
 
     <div id="login-screen">
         <div class="login-card">
-            <h2 style="margin-bottom:20px; font-family:'Dancing Script'; font-size: 2.5rem; color: var(--primary);">Jojy's World</h2>
+            <h2 style="margin-bottom:20px; font-family:'Dancing Script'; font-size: 2.5rem; color: var(--primary);">Jojy's Special Edition</h2>
             <input type="password" id="pass" placeholder="كلمة السر (jojy)">
-            <button class="btn-main" onclick="unlock()">دخول لعالم الهضبة ❤️</button>
+            <button class="btn-main" onclick="unlock()">افتحي عالمك ❤️</button>
         </div>
     </div>
 
     <div id="main-content">
-        <section>
+        <section id="hero">
             <div class="glass-box">
-                <h1 style="font-family:'Dancing Script'; font-size: 3rem; color: var(--primary);">Together Forever</h1>
+                <h1 style="font-family:'Dancing Script'; font-size: 3rem; color: var(--primary); margin-bottom: 10px;">Together Since...</h1>
                 <div class="timer-wrap">
                     <div class="t-node"><span id="days">0</span>أيام</div>
                     <div class="t-node"><span id="hours">0</span>ساعة</div>
@@ -118,25 +140,54 @@
                 </div>
                 
                 <div class="video-container">
-                    <iframe id="yt-player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe id="yt-player" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
-                <p style="margin-top:10px; font-size:0.9rem; opacity:0.8;">🎶 عمرو دياب - يا أجمل عيون</p>
+
+                <div class="promises-container">
+                    <div class="promise-card">
+                        <span class="promise-text">هفضل سندك في كل وقت</span>
+                        <span class="promise-icon">🤝❤️</span>
+                    </div>
+                    <div class="promise-card">
+                        <span class="promise-text">هكون دايماً أمانك وضحكتك</span>
+                        <span class="promise-icon">🛡️😊</span>
+                    </div>
+                    <div class="promise-card">
+                        <span class="promise-text">حبنا ملوش نهاية.. وعد</span>
+                        <span class="promise-icon">∞ ❤️</span>
+                    </div>
+                </div>
+
+                <p style="margin-top:40px; font-weight: bold; opacity: 0.7;">انزلي تحت لسة في مفاجآت.. 👇</p>
             </div>
         </section>
 
-        <section>
-            <h2 style="margin-bottom:20px; color:var(--accent);">ألبوم ذكرياتنا 📸</h2>
+        <section id="photos">
+            <h2 style="margin-bottom:40px; color:var(--accent); font-size: 2.5rem;">ذكرياتنا 📸</h2>
             <div class="gallery">
-                <div class="img-card"><img src="https://images.unsplash.com/photo-1516589174184-c685266d43d1?w=400"></div>
-                <div class="img-card"><img src="https://images.unsplash.com/photo-1518199266791-c699991ff80a?w=400"></div>
-                <div class="img-card"><img src="https://images.unsplash.com/photo-1522673607200-1648832cee98?w=400"></div>
-                <div class="img-card"><img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=400"></div>
+                <div class="photo-card" onclick="this.classList.toggle('flipped')">
+                    <div class="photo-inner">
+                        <div class="face front"><img src="https://images.unsplash.com/photo-1516589174184-c685266d43d1?w=500"></div>
+                        <div class="face back">أول نظرة ليكِ كانت بداية عمري ❤️</div>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="this.classList.toggle('flipped')">
+                    <div class="photo-inner">
+                        <div class="face front"><img src="https://images.unsplash.com/photo-1518199266791-c699991ff80a?w=500"></div>
+                        <div class="face back">ضحكتك هي اللي بتهون عليا أي صعب</div>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="this.classList.toggle('flipped')">
+                    <div class="photo-inner">
+                        <div class="face front"><img src="https://images.unsplash.com/photo-1522673607200-1648832cee98?w=500"></div>
+                        <div class="face back">كل ثانية معاكِ هي رزق كبير من ربنا</div>
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <section>
-            <div class="glass-box">
-                <h2 style="color:var(--primary);">رسالة من قلبي 💌</h2>
+            <button class="btn-main pulse-btn" style="max-width: 300px; margin-top: 80px;" onclick="showLoveMessage()">اضغطي هنا وشوفي الكلمة النهائية 💌</button>
+
+            <div id="love-message-section" class="glass-box">
                 <div id="typing-box"></div>
             </div>
         </section>
@@ -146,21 +197,14 @@
         function unlock() {
             const p = document.getElementById('pass').value.toLowerCase();
             if(p === 'jojy') {
-                document.getElementById('login-screen').style.opacity = '0';
+                document.getElementById('login-screen').style.transform = 'translateY(-100%)';
                 setTimeout(() => {
                     document.getElementById('login-screen').style.display = 'none';
                     document.getElementById('main-content').style.display = 'block';
-                    
-                    // تفعيل فيديو اليوتيوب مع تشغيل تلقائي
-                    // الفيديو المستخدم: Amr Diab - Ya Agmal Eyoun (Official Lyric Video)
                     document.getElementById('yt-player').src = "https://www.youtube.com/embed/HcodxmdesfY?autoplay=1";
-                    
                     startTimer();
-                    startTyping();
-                }, 800);
-            } else {
-                alert("الكلمة غلط يا روحي!");
-            }
+                }, 1000);
+            } else { alert("الكلمة غلط يا روحي!"); }
         }
 
         function startTimer() {
@@ -175,13 +219,24 @@
             }, 1000);
         }
 
-        const text = "يا جوجي.. الهضبة بيقول 'يا أجمل عيون وأحلى عيون'، وأنا بقولك إنك أجمل حلم عشته وبقيت حقيقة. الـ 60 يوم اللي فاتوا كانوا بداية عهد جديد بينا، عهد كله حب وسند. بوعدك إني هفضل جنبك لآخر العمر. بحبك بجنون! ❤️🌹";
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.photo-card').forEach(card => {
+                if(card.getBoundingClientRect().top < window.innerHeight - 100) card.classList.add('reveal');
+            });
+        });
+
+        const loveText = "يا جوجي.. الهضبة بيقول 'يا أجمل عيون وأحلى عيون'، وأنا بقولك إنك أجمل حلم عشته وبقيت حقيقة. الـ 60 يوم اللي فاتوا كانوا بداية عهد جديد بينا، عهد كله حب وسند. بوعدك إني هفضل جنبك لآخر العمر. بحبك بجنون! ❤️🌹";
         let idx = 0;
-        function startTyping() {
-            if(idx < text.length) {
-                document.getElementById('typing-box').innerHTML += text.charAt(idx);
+        function showLoveMessage() {
+            document.getElementById('love-message-section').style.display = 'block';
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            if(idx === 0) type();
+        }
+        function type() {
+            if(idx < loveText.length) {
+                document.getElementById('typing-box').innerHTML += loveText.charAt(idx);
                 idx++;
-                setTimeout(startTyping, 70);
+                setTimeout(type, 60);
             }
         }
 
@@ -190,10 +245,10 @@
         let pts = [];
         function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.onresize = resize; resize();
-        for(let i=0; i<80; i++) pts.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, s: Math.random()*2, vx: Math.random()*1-0.5, vy: Math.random()*1-0.5});
+        for(let i=0; i<60; i++) pts.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, s: Math.random()*2, vx: Math.random()*0.4-0.2, vy: Math.random()*0.4-0.2});
         function anim() {
             ctx.clearRect(0,0,canvas.width, canvas.height);
-            ctx.fillStyle = "rgba(255, 77, 109, 0.6)";
+            ctx.fillStyle = "rgba(255, 77, 109, 0.3)";
             pts.forEach(p => {
                 p.x += p.vx; p.y += p.vy;
                 if(p.x<0 || p.x>canvas.width) p.vx *= -1;
