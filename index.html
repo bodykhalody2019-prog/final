@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم جوجي الخاص ❤️</title>
+    <title>عالم جوجي - الإصدار النهائي ❤️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Dancing+Script:wght@700&display=swap');
 
@@ -26,6 +26,7 @@
 
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
+        /* شاشة الدخول */
         #login-screen {
             position: fixed; inset: 0; background: var(--dark-bg);
             display: flex; justify-content: center; align-items: center; z-index: 10000;
@@ -50,7 +51,8 @@
             cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s;
         }
 
-        #main-content { display: none; }
+        /* المحتوى الرئيسي */
+        #main-content { display: none; opacity: 0; transition: 1s opacity; }
 
         section {
             min-height: 100vh; display: flex; flex-direction: column;
@@ -60,60 +62,60 @@
         .glass-box {
             background: var(--glass); backdrop-filter: blur(15px);
             border-radius: 25px; padding: 30px; border: 1px solid rgba(255,255,255,0.1);
-            width: 100%; max-width: 700px; text-align: center;
+            width: 100%; max-width: 700px; text-align: center; margin-bottom: 30px;
         }
 
         /* العداد */
         .timer-wrap { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
         .t-node { background: rgba(0,0,0,0.5); padding: 15px; border-radius: 15px; min-width: 70px; border-bottom: 3px solid var(--primary); }
-        .t-node span { display: block; font-size: 2rem; color: var(--primary); font-weight: bold; }
+        .t-node span { display: block; font-size: 1.8rem; color: var(--primary); font-weight: bold; }
 
         /* الفيديو */
         .video-container {
             position: relative; width: 100%; padding-bottom: 56.25%;
-            height: 0; overflow: hidden; border-radius: 15px; margin-top: 20px;
+            height: 0; overflow: hidden; border-radius: 15px; margin: 25px 0;
             border: 2px solid var(--primary);
         }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* قسم الوعود (المستوحى من الصورة) */
-        .promises-container {
-            width: 100%; max-width: 500px; margin-top: 40px; display: flex; flex-direction: column; gap: 15px;
+        /* قسم الوعود المقتبس من الصورة */
+        .promises-list {
+            width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 12px; margin: 20px auto;
         }
-        .promise-card {
+        .promise-item {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px; padding: 20px 30px;
+            border-radius: 50px; padding: 18px 25px;
             display: flex; justify-content: space-between; align-items: center;
-            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.4s;
         }
-        .promise-card:hover { transform: scale(1.02); background: rgba(255, 77, 109, 0.1); }
-        .promise-text { font-size: 1.2rem; color: #eee; font-weight: 500; }
-        .promise-icon { font-size: 1.5rem; color: #ffca28; }
+        .promise-item:hover { background: rgba(255, 77, 109, 0.15); transform: translateX(-10px); }
+        .promise-text { font-size: 1.1rem; color: #fff; }
+        .promise-icon { font-size: 1.4rem; }
 
-        /* معرض الصور */
+        /* معرض الصور التفاعلي */
         .gallery {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px; width: 100%; max-width: 1000px; margin-top: 30px;
         }
-        .photo-card { height: 350px; perspective: 1000px; opacity: 0; transform: translateY(30px); transition: 1s all ease; }
-        .photo-card.reveal { opacity: 1; transform: translateY(0); }
-        .photo-inner { width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
+        .photo-card { height: 380px; perspective: 1000px; opacity: 0; transform: translateY(40px); transition: 0.8s all; }
+        .photo-card.active { opacity: 1; transform: translateY(0); }
+        .photo-inner { width: 100%; height: 100%; transition: transform 0.7s; transform-style: preserve-3d; cursor: pointer; position: relative; }
         .photo-card.flipped .photo-inner { transform: rotateY(180deg); }
         .face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; overflow: hidden; border: 2px solid var(--primary); }
         .face img { width: 100%; height: 100%; object-fit: cover; }
         .face.back {
-            background: var(--primary); transform: rotateY(180deg);
-            display: flex; align-items: center; justify-content: center;
-            padding: 20px; font-size: 1.3rem; text-align: center; font-weight: bold;
+            background: linear-gradient(45deg, var(--primary), #ff758c);
+            transform: rotateY(180deg); display: flex; align-items: center; justify-content: center;
+            padding: 25px; font-size: 1.4rem; text-align: center; font-weight: bold;
         }
 
-        #love-message-section { display: none; margin-top: 40px; }
-        #typing-box { font-size: 1.4rem; line-height: 1.8; color: #fff; }
-
-        .pulse-btn { animation: pulse 2s infinite; margin-top: 30px; }
-        @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.05);} 100% {transform: scale(1);} }
-
+        /* رسالة الحب النهائية */
+        #love-msg-box { display: none; margin-top: 50px; }
+        #typing-text { font-size: 1.4rem; line-height: 1.8; color: #fff; text-shadow: 0 0 10px rgba(255,77,109,0.5); }
+        
+        .pulse { animation: pulseAnim 2s infinite; }
+        @keyframes pulseAnim { 0% {transform: scale(1);} 50% {transform: scale(1.05);} 100% {transform: scale(1);} }
     </style>
 </head>
 <body>
@@ -122,133 +124,149 @@
 
     <div id="login-screen">
         <div class="login-card">
-            <h2 style="margin-bottom:20px; font-family:'Dancing Script'; font-size: 2.5rem; color: var(--primary);">Jojy's Special Edition</h2>
+            <h2 style="margin-bottom:20px; font-family:'Dancing Script'; font-size: 2.5rem; color: var(--primary);">Jojy's Kingdom</h2>
             <input type="password" id="pass" placeholder="كلمة السر (jojy)">
-            <button class="btn-main" onclick="unlock()">افتحي عالمك ❤️</button>
+            <button class="btn-main" onclick="unlock()">فتح الأبواب ❤️</button>
         </div>
     </div>
 
     <div id="main-content">
-        <section id="hero">
+        
+        <section>
             <div class="glass-box">
-                <h1 style="font-family:'Dancing Script'; font-size: 3rem; color: var(--primary); margin-bottom: 10px;">Together Since...</h1>
+                <h1 style="font-family:'Dancing Script'; font-size: 3rem; color: var(--primary);">Together Forever</h1>
+                
                 <div class="timer-wrap">
                     <div class="t-node"><span id="days">0</span>أيام</div>
                     <div class="t-node"><span id="hours">0</span>ساعة</div>
                     <div class="t-node"><span id="mins">0</span>دقيقة</div>
                     <div class="t-node"><span id="secs">0</span>ثانية</div>
                 </div>
-                
+
                 <div class="video-container">
                     <iframe id="yt-player" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
 
-                <div class="promises-container">
-                    <div class="promise-card">
+                <div class="promises-list">
+                    <div class="promise-item">
                         <span class="promise-text">هفضل سندك في كل وقت</span>
                         <span class="promise-icon">🤝❤️</span>
                     </div>
-                    <div class="promise-card">
+                    <div class="promise-item">
                         <span class="promise-text">هكون دايماً أمانك وضحكتك</span>
                         <span class="promise-icon">🛡️😊</span>
                     </div>
-                    <div class="promise-card">
+                    <div class="promise-item">
                         <span class="promise-text">حبنا ملوش نهاية.. وعد</span>
-                        <span class="promise-icon">∞ ❤️</span>
+                        <span class="promise-icon">∞ 💍</span>
                     </div>
                 </div>
-
-                <p style="margin-top:40px; font-weight: bold; opacity: 0.7;">انزلي تحت لسة في مفاجآت.. 👇</p>
             </div>
         </section>
 
-        <section id="photos">
-            <h2 style="margin-bottom:40px; color:var(--accent); font-size: 2.5rem;">ذكرياتنا 📸</h2>
+        <section id="gallery-section">
+            <h2 style="margin-bottom:40px; color:var(--accent); font-size: 2.2rem;">ذكرياتنا (اضغطي على الصور) 📸</h2>
             <div class="gallery">
                 <div class="photo-card" onclick="this.classList.toggle('flipped')">
                     <div class="photo-inner">
                         <div class="face front"><img src="https://images.unsplash.com/photo-1516589174184-c685266d43d1?w=500"></div>
-                        <div class="face back">أول نظرة ليكِ كانت بداية عمري ❤️</div>
+                        <div class="face back">أجمل صدفة في عمري ❤️</div>
                     </div>
                 </div>
                 <div class="photo-card" onclick="this.classList.toggle('flipped')">
                     <div class="photo-inner">
                         <div class="face front"><img src="https://images.unsplash.com/photo-1518199266791-c699991ff80a?w=500"></div>
-                        <div class="face back">ضحكتك هي اللي بتهون عليا أي صعب</div>
+                        <div class="face back">ضحكتك هي جنة الدنيا 😍</div>
                     </div>
                 </div>
                 <div class="photo-card" onclick="this.classList.toggle('flipped')">
                     <div class="photo-inner">
                         <div class="face front"><img src="https://images.unsplash.com/photo-1522673607200-1648832cee98?w=500"></div>
-                        <div class="face back">كل ثانية معاكِ هي رزق كبير من ربنا</div>
+                        <div class="face back">معاكِ لقيت نفسي بجد 💍</div>
                     </div>
                 </div>
             </div>
 
-            <button class="btn-main pulse-btn" style="max-width: 300px; margin-top: 80px;" onclick="showLoveMessage()">اضغطي هنا وشوفي الكلمة النهائية 💌</button>
-
-            <div id="love-message-section" class="glass-box">
-                <div id="typing-box"></div>
+            <button class="btn-main pulse" style="max-width: 280px; margin-top: 80px;" onclick="revealLoveMsg()">هنا كلمة السر الأخيرة.. دوسي 💌</button>
+            
+            <div id="love-msg-box" class="glass-box">
+                <div id="typing-text"></div>
             </div>
         </section>
+
     </div>
 
     <script>
+        // 1. وظيفة الدخول
         function unlock() {
-            const p = document.getElementById('pass').value.toLowerCase();
-            if(p === 'jojy') {
+            const pass = document.getElementById('pass').value.toLowerCase();
+            if(pass === 'jojy') {
                 document.getElementById('login-screen').style.transform = 'translateY(-100%)';
                 setTimeout(() => {
                     document.getElementById('login-screen').style.display = 'none';
-                    document.getElementById('main-content').style.display = 'block';
+                    const main = document.getElementById('main-content');
+                    main.style.display = 'block';
+                    setTimeout(() => main.style.opacity = '1', 100);
+                    
+                    // تشغيل الفيديو (عمرو دياب - يا أجمل عيون)
                     document.getElementById('yt-player').src = "https://www.youtube.com/embed/HcodxmdesfY?autoplay=1";
-                    startTimer();
+                    
+                    startClock();
+                    initScrollReveal();
                 }, 1000);
-            } else { alert("الكلمة غلط يا روحي!"); }
+            } else { alert("حاولي تاني يا قلبي.."); }
         }
 
-        function startTimer() {
-            const start = new Date("2024-01-01T00:00:00"); 
+        // 2. العداد الزمني (تاريخ البداية)
+        function startClock() {
+            const startDate = new Date("2024-01-01T00:00:00"); // عدل التاريخ هنا
             setInterval(() => {
                 const now = new Date();
-                const d = now - start;
-                document.getElementById('days').innerText = Math.floor(d/(1000*60*60*24));
-                document.getElementById('hours').innerText = Math.floor((d/(1000*60*60))%24);
-                document.getElementById('mins').innerText = Math.floor((d/(1000*60))%60);
-                document.getElementById('secs').innerText = Math.floor((d/1000)%60);
+                const diff = now - startDate;
+                document.getElementById('days').innerText = Math.floor(diff/(1000*60*60*24));
+                document.getElementById('hours').innerText = Math.floor((diff/(1000*60*60))%24);
+                document.getElementById('mins').innerText = Math.floor((diff/(1000*60))%60);
+                document.getElementById('secs').innerText = Math.floor((diff/1000)%60);
             }, 1000);
         }
 
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.photo-card').forEach(card => {
-                if(card.getBoundingClientRect().top < window.innerHeight - 100) card.classList.add('reveal');
-            });
-        });
-
-        const loveText = "يا جوجي.. الهضبة بيقول 'يا أجمل عيون وأحلى عيون'، وأنا بقولك إنك أجمل حلم عشته وبقيت حقيقة. الـ 60 يوم اللي فاتوا كانوا بداية عهد جديد بينا، عهد كله حب وسند. بوعدك إني هفضل جنبك لآخر العمر. بحبك بجنون! ❤️🌹";
-        let idx = 0;
-        function showLoveMessage() {
-            document.getElementById('love-message-section').style.display = 'block';
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-            if(idx === 0) type();
+        // 3. أنيميشن الصور عند السكرول
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.photo-card').forEach(card => observer.observe(card));
         }
-        function type() {
-            if(idx < loveText.length) {
-                document.getElementById('typing-box').innerHTML += loveText.charAt(idx);
-                idx++;
-                setTimeout(type, 60);
+
+        // 4. رسالة الحب النهائية (Typing Effect)
+        const loveMsg = "يا جوجي.. الهضبة بيقول 'يا أجمل عيون وأحلى عيون'، وأنا بقولك إنك أجمل حلم عشته وبقيت حقيقة. الـ 60 يوم اللي فاتوا كانوا بداية عهد جديد بينا، عهد كله حب وسند. بوعدك إني هفضل جنبك لآخر العمر. بحبك بجنون! ❤️🌹";
+        let charIdx = 0;
+        function revealLoveMsg() {
+            document.getElementById('love-msg-box').style.display = 'block';
+            if(charIdx === 0) typeEffect();
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+        function typeEffect() {
+            if(charIdx < loveMsg.length) {
+                document.getElementById('typing-text').innerHTML += loveMsg.charAt(charIdx);
+                charIdx++;
+                setTimeout(typeEffect, 60);
             }
         }
 
+        // 5. خلفية الجزيئات (Particles)
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let pts = [];
         function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.onresize = resize; resize();
-        for(let i=0; i<60; i++) pts.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, s: Math.random()*2, vx: Math.random()*0.4-0.2, vy: Math.random()*0.4-0.2});
+        for(let i=0; i<70; i++) pts.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, s: Math.random()*2, vx: Math.random()*0.4-0.2, vy: Math.random()*0.4-0.2});
         function anim() {
             ctx.clearRect(0,0,canvas.width, canvas.height);
-            ctx.fillStyle = "rgba(255, 77, 109, 0.3)";
+            ctx.fillStyle = "rgba(255, 77, 109, 0.4)";
             pts.forEach(p => {
                 p.x += p.vx; p.y += p.vy;
                 if(p.x<0 || p.x>canvas.width) p.vx *= -1;
