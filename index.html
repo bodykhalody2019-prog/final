@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم جوجي - Special Edition</title>
+    <title>عالم جوجي - عمرو دياب Edition</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Dancing+Script:wght@700&display=swap');
 
         :root {
             --primary: #ff4d6d;
-            --secondary: #ff85a1;
             --accent: #00d4ff;
             --dark-bg: #0d0118;
-            --glass: rgba(255, 255, 255, 0.08);
+            --glass: rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,98 +21,70 @@
             background-color: var(--dark-bg);
             color: white;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
         #bg-canvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; background: radial-gradient(circle at center, #2a0a3d 0%, #0d0118 100%);
+            z-index: -1;
         }
 
         /* شاشة الدخول */
         #login-screen {
             position: fixed; inset: 0; background: var(--dark-bg);
             display: flex; justify-content: center; align-items: center; z-index: 10000;
+            transition: 0.8s ease-out;
         }
 
         .login-card {
-            background: var(--glass); backdrop-filter: blur(25px);
-            padding: 50px 30px; border-radius: 40px; text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.15); width: 90%; max-width: 400px;
-            box-shadow: 0 0 50px rgba(255, 77, 109, 0.2);
+            background: var(--glass); backdrop-filter: blur(20px);
+            padding: 40px; border-radius: 30px; text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2); width: 90%; max-width: 380px;
         }
-
-        .login-card h2 { margin-bottom: 25px; font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--primary); }
 
         input {
-            width: 100%; padding: 15px; border-radius: 15px; border: 2px solid rgba(255,255,255,0.1);
-            background: rgba(0,0,0,0.3); color: white; text-align: center; font-size: 1.1rem;
-            margin-bottom: 20px; outline: none; transition: 0.3s;
+            width: 100%; padding: 15px; border-radius: 12px; border: none;
+            background: rgba(255,255,255,0.1); color: white; text-align: center;
+            margin-bottom: 20px; outline: none; font-size: 1.1rem;
         }
-
-        input:focus { border-color: var(--primary); box-shadow: 0 0 15px var(--primary); }
 
         .btn-main {
             background: linear-gradient(45deg, var(--primary), #ff758c);
-            color: white; border: none; padding: 15px; border-radius: 15px;
-            cursor: pointer; width: 100%; font-weight: bold; font-size: 1.2rem;
-            box-shadow: 0 5px 20px rgba(255, 77, 109, 0.4); transition: 0.3s;
-            animation: pulse 2s infinite;
+            color: white; border: none; padding: 15px 30px; border-radius: 12px;
+            cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        #main-content { display: none; }
+        /* المحتوى الرئيسي */
+        #main-content { display: none; padding: 20px; }
 
         section {
             min-height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; padding: 60px 20px;
+            justify-content: center; align-items: center; margin-bottom: 50px;
         }
-
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
 
         .glass-box {
-            background: var(--glass); backdrop-filter: blur(20px);
-            border-radius: 35px; padding: 40px; border: 1px solid rgba(255,255,255,0.1);
-            width: 100%; max-width: 600px; text-align: center;
+            background: var(--glass); backdrop-filter: blur(15px);
+            border-radius: 25px; padding: 30px; border: 1px solid rgba(255,255,255,0.1);
+            width: 100%; max-width: 700px; text-align: center;
         }
 
-        /* معرض الصور المحدث */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1000px;
-            margin-top: 30px;
+        /* معرض الصور */
+        .gallery {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px; width: 100%; margin-top: 20px;
         }
 
-        .photo-card {
-            height: 350px; perspective: 1000px;
+        .img-card {
+            height: 250px; border-radius: 15px; overflow: hidden;
+            position: relative; border: 2px solid var(--primary);
         }
-        .photo-inner {
-            width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; position: relative;
-        }
-        .photo-card:hover .photo-inner { transform: rotateY(180deg); }
-        .face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; overflow: hidden; border: 2px solid var(--primary); }
-        .face.back { background: var(--primary); transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; padding: 20px; font-size: 1.2rem; text-align: center; }
 
-        .timer-wrap { display: flex; justify-content: center; gap: 15px; margin: 25px 0; }
-        .t-node { background: rgba(0,0,0,0.5); padding: 15px; border-radius: 15px; min-width: 70px; border-bottom: 3px solid var(--primary); }
-        .t-node span { display: block; font-size: 28px; font-weight: 700; color: var(--accent); }
+        .img-card img { width: 100%; height: 100%; object-fit: cover; }
 
-        .music-bar {
-            margin-top: 20px; background: rgba(255,255,255,0.1);
-            padding: 10px 20px; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px;
-        }
-        audio { height: 30px; filter: invert(100%); }
+        .timer-wrap { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+        .t-node { background: rgba(0,0,0,0.4); padding: 10px; border-radius: 10px; min-width: 60px; }
+        .t-node span { display: block; font-size: 1.5rem; color: var(--primary); font-weight: bold; }
 
-        #typing-box { font-size: 1.2rem; line-height: 1.8; color: #eee; }
+        #typing-box { font-size: 1.3rem; line-height: 1.6; min-height: 100px; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -122,132 +93,131 @@
 
     <div id="login-screen">
         <div class="login-card">
-            <h2>Welcome Jojy</h2>
-            <input type="password" id="pass" placeholder="كلمة السر هي اسمك بالدلع..">
-            <button class="btn-main" onclick="init()">دخول لعالمنا ❤️</button>
-            <p id="err" style="display:none; color:var(--primary); margin-top:15px;">الكلمة غلط يا روحي.. جربي تاني</p>
+            <h2 style="margin-bottom:20px; font-family:'Dancing Script'; font-size: 2.5rem; color: var(--primary);">Jojy's World</h2>
+            <input type="password" id="pass" placeholder="كلمة السر (jojy)">
+            <button class="btn-main" onclick="unlock()">فتح القفل ❤️</button>
         </div>
     </div>
 
     <div id="main-content">
-        
-        <section class="reveal">
+        <section>
             <div class="glass-box">
-                <h1 style="color: var(--primary); font-family: 'Dancing Script', cursive; font-size: 2.8rem;">Amr Diab Night 🎵</h1>
-                <p>صوت الهضبة بيوصف اللي في قلبي ليكي</p>
+                <h1 style="font-family:'Dancing Script'; font-size: 3rem; color: var(--primary);">Together Forever</h1>
                 <div class="timer-wrap">
-                    <div class="t-node"><span id="days">0</span><label>أيام</label></div>
-                    <div class="t-node"><span id="hours">0</span><label>ساعة</label></div>
-                    <div class="t-node"><span id="mins">0</span><label>دقيقة</label></div>
+                    <div class="t-node"><span id="days">0</span>أيام</div>
+                    <div class="t-node"><span id="hours">0</span>ساعة</div>
+                    <div class="t-node"><span id="mins">0</span>دقيقة</div>
+                    <div class="t-node"><span id="secs">0</span>ثانية</div>
                 </div>
-                <div class="music-bar">
-                    <span>🎶</span>
-                    <audio id="player" controls loop>
+                <div style="margin-top:20px;">
+                    <p style="margin-bottom:10px;">🎧 بنسمع دلوقتي: <b>عمرو دياب - يا أجمل عيون</b></p>
+                    <audio id="music" controls loop>
                         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
                     </audio>
                 </div>
-                <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">(ملاحظة: تأكدي من رفع الصوت)</p>
             </div>
         </section>
 
-        <section class="reveal">
-            <h2 style="font-size: 2rem; margin-bottom: 30px; color: var(--accent);">البوم ذكرياتنا السحرية 📸</h2>
-            <div class="gallery-grid">
-                <div class="photo-card">
-                    <div class="photo-inner">
-                        <div class="face front"><img src="https://images.unsplash.com/photo-1518199266791-c699991ff80a?w=400" style="width:100%; height:100%; object-fit:cover;"></div>
-                        <div class="face back">ضحكتك بتنور دنيتي ❤️</div>
-                    </div>
-                </div>
-                <div class="photo-card">
-                    <div class="photo-inner">
-                        <div class="face front"><img src="https://images.unsplash.com/photo-1522673607200-1648832cee98?w=400" style="width:100%; height:100%; object-fit:cover;"></div>
-                        <div class="face back">كل نظرة ليكي حكاية حب جديدة</div>
-                    </div>
-                </div>
-                <div class="photo-card">
-                    <div class="photo-inner">
-                        <div class="face front"><img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=400" style="width:100%; height:100%; object-fit:cover;"></div>
-                        <div class="face back">انتي أجمل ما في أيامي</div>
-                    </div>
-                </div>
-                <div class="photo-card">
-                    <div class="photo-inner">
-                        <div class="face front"><img src="https://images.unsplash.com/photo-1516589174184-c685266d43d1?w=400" style="width:100%; height:100%; object-fit:cover;"></div>
-                        <div class="face back">وعدي ليكي هيفضل للأبد</div>
-                    </div>
-                </div>
+        <section>
+            <h2 style="margin-bottom:20px; color:var(--accent);">ذكرياتنا 📸</h2>
+            <div class="gallery">
+                <div class="img-card"><img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=400"></div>
+                <div class="img-card"><img src="https://images.unsplash.com/photo-1518199266791-c699991ff80a?w=400"></div>
+                <div class="img-card"><img src="https://images.unsplash.com/photo-1522673607200-1648832cee98?w=400"></div>
+                <div class="img-card"><img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=400"></div>
             </div>
         </section>
 
-        <section class="reveal">
+        <section>
             <div class="glass-box">
-                <h2 style="color: var(--primary); margin-bottom: 20px;">كلمة من قلبي 💌</h2>
+                <h2 style="color:var(--primary);">رسالة لكِ 💌</h2>
                 <div id="typing-box"></div>
-                <button id="start-type" class="btn-main" onclick="startTyping()" style="margin-top: 20px;">اقرئي رسالتي</button>
             </div>
         </section>
-
     </div>
 
     <script>
-        // دالة الدخول
-        function init() {
-            if(document.getElementById('pass').value.toLowerCase() === 'jojy') {
-                document.getElementById('login-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-                const audio = document.getElementById('player');
-                // تحديث رابط الأغنية لأغنية عمرو دياب (مثال)
-                audio.src = "https://soundcloud.com/laylasamy/best-of-amr-diab-mp3_320k-mp3"; // تأكد من وجود رابط مباشر صالح
-                audio.play();
-                startTimer();
-                handleScroll();
+        // 1. نظام الدخول
+        function unlock() {
+            const p = document.getElementById('pass').value.toLowerCase();
+            if(p === 'jojy') {
+                document.getElementById('login-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('login-screen').style.display = 'none';
+                    document.getElementById('main-content').style.display = 'block';
+                    
+                    // تشغيل الموسيقى
+                    const audio = document.getElementById('music');
+                    audio.src = "https://files.catbox.moe/pvhv3x.mp3"; // رابط عمرو دياب
+                    audio.play().catch(() => console.log("تحتاج ضغط يدوي للموسيقى"));
+                    
+                    startTimer();
+                    startTyping();
+                }, 800);
             } else {
-                document.getElementById('err').style.display = 'block';
+                alert("الكلمة غلط يا روحي!");
             }
         }
 
-        // عداد الوقت الحقيقي
+        // 2. العداد الحقيقي
         function startTimer() {
-            const startDate = new Date("2024-01-01"); // حط هنا تاريخ بدايتكم
+            const start = new Date("2024-01-01T00:00:00"); 
             setInterval(() => {
                 const now = new Date();
-                const diff = now - startDate;
-                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-                document.getElementById('hours').innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                document.getElementById('mins').innerText = Math.floor((diff / (1000 * 60)) % 60);
+                const d = now - start;
+                document.getElementById('days').innerText = Math.floor(d/(1000*60*60*24));
+                document.getElementById('hours').innerText = Math.floor((d/(1000*60*60))%24);
+                document.getElementById('mins').innerText = Math.floor((d/(1000*60))%60);
+                document.getElementById('secs').innerText = Math.floor((d/1000)%60);
             }, 1000);
         }
 
-        // تأثير الظهور عند السكرول
-        function handleScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(r => {
-                let top = r.getBoundingClientRect().top;
-                if(top < window.innerHeight - 50) r.classList.add('active');
-            });
-        }
-        window.addEventListener('scroll', handleScroll);
-
-        // تأثير الكتابة
-        const msg = "يا جوجي.. زي ما عمرو دياب بيقول 'يا أجمل عيون وأحلى عيون'، أنتي فعلاً أجمل حاجة حصلت في حياتي. الـ 60 يوم اللي فاتوا دول كانوا مجرد تسخين لحياة كاملة هنعيشها مع بعض في سعادة. بحبك بجنون!";
-        let i = 0;
+        // 3. تأثير الكتابة
+        const text = "يا جوجي.. الـ 60 يوم اللي فاتوا كانوا أجمل أيام حياتي. على صوت عمرو دياب بقولك إنك 'أجمل عيون' شفتها، وإنك الرزق اللي هحافظ عليه طول عمري. بحبك للأبد! ❤️";
+        let idx = 0;
         function startTyping() {
-            document.getElementById('start-type').style.display = 'none';
-            type();
-        }
-        function type() {
-            if (i < msg.length) {
-                document.getElementById('typing-box').innerHTML += msg.charAt(i);
-                i++;
-                setTimeout(type, 50);
+            if(idx < text.length) {
+                document.getElementById('typing-box').innerHTML += text.charAt(idx);
+                idx++;
+                setTimeout(startTyping, 70);
             }
         }
 
-        // خلفية الجزيئات (نفس الكود السابق)
+        // 4. الخلفية المتحركة
         const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.width = window.innerWidth, h = canvas.height = window.innerHeight;
-        // (تم اختصار كود الانيميشن لسهولة النسخ ولكن يفضل ابقاء النسخة السابقة لديك)
+        const ctx = canvas.getContext('2d');
+        let pts = [];
+        
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.onresize = resize; resize();
+
+        for(let i=0; i<80; i++) {
+            pts.push({
+                x: Math.random()*canvas.width,
+                y: Math.random()*canvas.height,
+                s: Math.random()*2,
+                vx: Math.random()*1-0.5,
+                vy: Math.random()*1-0.5
+            });
+        }
+
+        function anim() {
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(255, 77, 109, 0.6)";
+            pts.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if(p.x<0 || p.x>canvas.width) p.vx *= -1;
+                if(p.y<0 || p.y>canvas.height) p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.s, 0, Math.PI*2);
+                ctx.fill();
+            });
+            requestAnimationFrame(anim);
+        }
+        anim();
     </script>
 </body>
 </html>
