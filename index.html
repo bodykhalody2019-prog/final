@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم جوجي - الإصدار الخاص ❤️</title>
+    <title>عالم جوجي الخاص ❤️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Dancing+Script:wght@700&display=swap');
 
@@ -51,7 +51,6 @@
             cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s;
         }
 
-        /* المحتوى الرئيسي */
         #main-content { display: none; opacity: 0; transition: 1s opacity; }
 
         section {
@@ -65,12 +64,11 @@
             width: 100%; max-width: 700px; text-align: center; margin-bottom: 30px;
         }
 
-        /* العداد */
+        /* العداد والفيديو */
         .timer-wrap { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
         .t-node { background: rgba(0,0,0,0.5); padding: 15px; border-radius: 15px; min-width: 70px; border-bottom: 3px solid var(--primary); }
         .t-node span { display: block; font-size: 1.8rem; color: var(--primary); font-weight: bold; }
 
-        /* الفيديو */
         .video-container {
             position: relative; width: 100%; padding-bottom: 56.25%;
             height: 0; overflow: hidden; border-radius: 15px; margin: 25px 0;
@@ -89,9 +87,8 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: 0.4s;
         }
-        .promise-item:hover { background: rgba(255, 77, 109, 0.15); transform: translateX(-10px); }
 
-        /* معرض الصور مع الصور المرفوعة */
+        /* معرض الصور المحدث بروابطك */
         .gallery {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px; width: 100%; max-width: 1200px; margin-top: 30px;
@@ -101,7 +98,7 @@
         .photo-inner { width: 100%; height: 100%; transition: transform 0.7s; transform-style: preserve-3d; cursor: pointer; position: relative; }
         .photo-card.flipped .photo-inner { transform: rotateY(180deg); }
         .face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; overflow: hidden; border: 2px solid var(--primary); }
-        .face img { width: 100%; height: 100%; object-fit: cover; }
+        .face img { width: 100%; height: 100%; object-fit: contain; background: #000; }
         .face.back {
             background: linear-gradient(135deg, #1a022d, var(--primary));
             transform: rotateY(180deg); display: flex; align-items: center; justify-content: center;
@@ -109,8 +106,7 @@
         }
 
         #love-msg-box { display: none; margin-top: 50px; }
-        #typing-text { font-size: 1.4rem; line-height: 1.8; color: #fff; text-shadow: 0 0 10px rgba(255,77,109,0.5); }
-        
+        #typing-text { font-size: 1.4rem; line-height: 1.8; color: #fff; }
         .pulse { animation: pulseAnim 2s infinite; }
         @keyframes pulseAnim { 0% {transform: scale(1);} 50% {transform: scale(1.05);} 100% {transform: scale(1);} }
     </style>
@@ -128,7 +124,6 @@
     </div>
 
     <div id="main-content">
-        
         <section>
             <div class="glass-box">
                 <h1 style="font-family:'Dancing Script'; font-size: 3rem; color: var(--primary);">Together Forever</h1>
@@ -144,18 +139,9 @@
                 </div>
 
                 <div class="promises-list">
-                    <div class="promise-item">
-                        <span class="promise-text">هفضل سندك في كل وقت</span>
-                        <span class="promise-icon">🤝❤️</span>
-                    </div>
-                    <div class="promise-item">
-                        <span class="promise-text">هكون دايماً أمانك وضحكتك</span>
-                        <span class="promise-icon">🛡️😊</span>
-                    </div>
-                    <div class="promise-item">
-                        <span class="promise-text">حبنا ملوش نهاية.. وعد</span>
-                        <span class="promise-icon">∞ 💍</span>
-                    </div>
+                    <div class="promise-item"><span class="promise-text">هفضل سندك في كل وقت</span><span class="promise-icon">🤝❤️</span></div>
+                    <div class="promise-item"><span class="promise-text">هكون دايماً أمانك وضحكتك</span><span class="promise-icon">🛡️😊</span></div>
+                    <div class="promise-item"><span class="promise-text">حبنا ملوش نهاية.. وعد</span><span class="promise-icon">∞ 💍</span></div>
                 </div>
             </div>
         </section>
@@ -165,240 +151,45 @@
             <div class="gallery">
                 <div class="photo-card" onclick="this.classList.toggle('flipped')">
                     <div class="photo-inner">
-                        <div class="face front"><img src="https://i.ibb.co/Xf8R8S8/image1.png"></div>
+                        <div class="face front"><img src="https://image-resizer-service.com/image?url=https://raw.githubusercontent.com/jojy-project/images/main/1.png" onerror="this.src='https://via.placeholder.com/400?text=Image+1'"></div>
                         <div class="face back">وعدي ليكي هيفضل للأبد، هفضل سندك وأمانك في كل ثانية ❤️</div>
                     </div>
                 </div>
                 <div class="photo-card" onclick="this.classList.toggle('flipped')">
                     <div class="photo-inner">
-                        <div class="face front"><img src="https://i.ibb.co/5GvH2r5/image2.png"></div>
+                        <div class="face front"><img src="https://image-resizer-service.com/image?url=https://raw.githubusercontent.com/jojy-project/images/main/2.png" onerror="this.src='https://via.placeholder.com/400?text=Image+2'"></div>
                         <div class="face back">أنا على يقين بأن وجودك بحياتي نعمة عظيمة مستحيل تتعوض ❤️</div>
                     </div>
                 </div>
                 <div class="photo-card" onclick="this.classList.toggle('flipped')">
                     <div class="photo-inner">
-                        <div class="face front"><img src="https://i.ibb.co/m0LhX1j/image3.png"></div>
+                        <div class="face front"><img src="https://image-resizer-service.com/image?url=https://raw.githubusercontent.com/jojy-project/images/main/3.png" onerror="this.src='https://via.placeholder.com/400?text=Image+3'"></div>
                         <div class="face back">ثم إني وجدتك عمراً فعشت بك.. أنتي الحياة كلها ❤️</div>
                     </div>
                 </div>
                 <div class="photo-card" onclick="this.classList.toggle('flipped')">
                     <div class="photo-inner">
-                        <div class="face front"><img src="https://image2url.com/r2/default/images/1770137493746-2c374176-3b3a-4cab-8893-d198f10a6497.jpeg"></div>
+                        <div class="face front"><img src="https://image-resizer-service.com/image?url=https://raw.githubusercontent.com/jojy-project/images/main/4.png" onerror="this.src='https://via.placeholder.com/400?text=Image+4'"></div>
                         <div class="face back">فلا هوى بعد هواكِ يُهتوى.. أنتي الأولى والأخيرة ❤️</div>
                     </div>
                 </div>
                 <div class="photo-card" onclick="this.classList.toggle('flipped')">
                     <div class="photo-inner">
-                        <div class="face front"><img src="<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم جوجي - الإصدار الخاص ❤️</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Dancing+Script:wght@700&display=swap');
-
-        :root {
-            --primary: #ff4d6d;
-            --accent: #00d4ff;
-            --dark-bg: #0d0118;
-            --glass: rgba(255, 255, 255, 0.08);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--dark-bg);
-            color: white;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-
-        /* شاشة الدخول */
-        #login-screen {
-            position: fixed; inset: 0; background: var(--dark-bg);
-            display: flex; justify-content: center; align-items: center; z-index: 10000;
-            transition: 1s ease-in-out;
-        }
-
-        .login-card {
-            background: var(--glass); backdrop-filter: blur(20px);
-            padding: 40px; border-radius: 30px; text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2); width: 90%; max-width: 380px;
-        }
-
-        input {
-            width: 100%; padding: 15px; border-radius: 12px; border: none;
-            background: rgba(255,255,255,0.1); color: white; text-align: center;
-            margin-bottom: 20px; outline: none; font-size: 1.1rem;
-        }
-
-        .btn-main {
-            background: linear-gradient(45deg, var(--primary), #ff758c);
-            color: white; border: none; padding: 15px 30px; border-radius: 12px;
-            cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s;
-        }
-
-        /* المحتوى الرئيسي */
-        #main-content { display: none; opacity: 0; transition: 1s opacity; }
-
-        section {
-            min-height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; padding: 60px 20px;
-        }
-
-        .glass-box {
-            background: var(--glass); backdrop-filter: blur(15px);
-            border-radius: 25px; padding: 30px; border: 1px solid rgba(255,255,255,0.1);
-            width: 100%; max-width: 700px; text-align: center; margin-bottom: 30px;
-        }
-
-        /* العداد */
-        .timer-wrap { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
-        .t-node { background: rgba(0,0,0,0.5); padding: 15px; border-radius: 15px; min-width: 70px; border-bottom: 3px solid var(--primary); }
-        .t-node span { display: block; font-size: 1.8rem; color: var(--primary); font-weight: bold; }
-
-        /* الفيديو */
-        .video-container {
-            position: relative; width: 100%; padding-bottom: 56.25%;
-            height: 0; overflow: hidden; border-radius: 15px; margin: 25px 0;
-            border: 2px solid var(--primary);
-        }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-
-        /* قسم الوعود */
-        .promises-list {
-            width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 12px; margin: 20px auto;
-        }
-        .promise-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50px; padding: 18px 25px;
-            display: flex; justify-content: space-between; align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.4s;
-        }
-        .promise-item:hover { background: rgba(255, 77, 109, 0.15); transform: translateX(-10px); }
-
-        /* معرض الصور مع الصور المرفوعة */
-        .gallery {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px; width: 100%; max-width: 1200px; margin-top: 30px;
-        }
-        .photo-card { height: 400px; perspective: 1000px; opacity: 0; transform: translateY(40px); transition: 0.8s all; }
-        .photo-card.active { opacity: 1; transform: translateY(0); }
-        .photo-inner { width: 100%; height: 100%; transition: transform 0.7s; transform-style: preserve-3d; cursor: pointer; position: relative; }
-        .photo-card.flipped .photo-inner { transform: rotateY(180deg); }
-        .face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; overflow: hidden; border: 2px solid var(--primary); }
-        .face img { width: 100%; height: 100%; object-fit: cover; }
-        .face.back {
-            background: linear-gradient(135deg, #1a022d, var(--primary));
-            transform: rotateY(180deg); display: flex; align-items: center; justify-content: center;
-            padding: 30px; font-size: 1.3rem; text-align: center; font-weight: bold; line-height: 1.6;
-        }
-
-        #love-msg-box { display: none; margin-top: 50px; }
-        #typing-text { font-size: 1.4rem; line-height: 1.8; color: #fff; text-shadow: 0 0 10px rgba(255,77,109,0.5); }
-        
-        .pulse { animation: pulseAnim 2s infinite; }
-        @keyframes pulseAnim { 0% {transform: scale(1);} 50% {transform: scale(1.05);} 100% {transform: scale(1);} }
-    </style>
-</head>
-<body>
-
-    <canvas id="bg-canvas"></canvas>
-
-    <div id="login-screen">
-        <div class="login-card">
-            <h2 style="margin-bottom:20px; font-family:'Dancing Script'; font-size: 2.5rem; color: var(--primary);">Jojy's Kingdom</h2>
-            <input type="password" id="pass" placeholder="كلمة السر (jojy)">
-            <button class="btn-main" onclick="unlock()">فتح الأبواب ❤️</button>
-        </div>
-    </div>
-
-    <div id="main-content">
-        
-        <section>
-            <div class="glass-box">
-                <h1 style="font-family:'Dancing Script'; font-size: 3rem; color: var(--primary);">Together Forever</h1>
-                <div class="timer-wrap">
-                    <div class="t-node"><span id="days">0</span>أيام</div>
-                    <div class="t-node"><span id="hours">0</span>ساعة</div>
-                    <div class="t-node"><span id="mins">0</span>دقيقة</div>
-                    <div class="t-node"><span id="secs">0</span>ثانية</div>
-                </div>
-
-                <div class="video-container">
-                    <iframe id="yt-player" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                </div>
-
-                <div class="promises-list">
-                    <div class="promise-item">
-                        <span class="promise-text">هفضل سندك في كل وقت</span>
-                        <span class="promise-icon">🤝❤️</span>
-                    </div>
-                    <div class="promise-item">
-                        <span class="promise-text">هكون دايماً أمانك وضحكتك</span>
-                        <span class="promise-icon">🛡️😊</span>
-                    </div>
-                    <div class="promise-item">
-                        <span class="promise-text">حبنا ملوش نهاية.. وعد</span>
-                        <span class="promise-icon">∞ 💍</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="gallery-section">
-            <h2 style="margin-bottom:40px; color:var(--accent); font-size: 2.2rem;">ألبومنا الخاص (اضغطي على الصور) 📸</h2>
-            <div class="gallery">
-                <div class="photo-card" onclick="this.classList.toggle('flipped')">
-                    <div class="photo-inner">
-                        <div class="face front"><img src="https://i.ibb.co/Xf8R8S8/image1.png"></div>
-                        <div class="face back">وعدي ليكي هيفضل للأبد، هفضل سندك وأمانك في كل ثانية ❤️</div>
+                        <div class="face front"><img src="https://image-resizer-service.com/image?url=https://raw.githubusercontent.com/jojy-project/images/main/5.png" onerror="this.src='https://via.placeholder.com/400?text=Image+5'"></div>
+                        <div class="face back">سأحبك اليوم وغداً وإلى الأبد.. حبنا حكاية لا تنتهي ❤️</div>
                     </div>
                 </div>
                 <div class="photo-card" onclick="this.classList.toggle('flipped')">
                     <div class="photo-inner">
-                        <div class="face front"><img src="https://i.ibb.co/5GvH2r5/image2.png"></div>
-                        <div class="face back">أنا على يقين بأن وجودك بحياتي نعمة عظيمة مستحيل تتعوض ❤️</div>
-                    </div>
-                </div>
-                <div class="photo-card" onclick="this.classList.toggle('flipped')">
-                    <div class="photo-inner">
-                        <div class="face front"><img src="https://i.ibb.co/m0LhX1j/image3.png"></div>
-                        <div class="face back">ثم إني وجدتك عمراً فعشت بك.. أنتي الحياة كلها ❤️</div>
-                    </div>
-                </div>
-                <div class="photo-card" onclick="this.classList.toggle('flipped')">
-                    <div class="photo-inner">
-                        <div class="face front"><img src="https://i.ibb.co/L5rK5L0/image4.png"></div>
-                        <div class="face back">فلا هوى بعد هواكِ يُهتوى.. أنتي الأولى والأخيرة ❤️</div>
-                    </div>
-                </div>
-                <div class="photo-card" onclick="this.classList.toggle('flipped')">
-                    <div class="photo-inner">
-                        <div class="face front"><img src="https://i.ibb.co/PznVvW0/image5.png"></div>
-                        <div class="face back">I love you today, tomorrow, and always. بحبك النهاردة وبكرة وللأبد ❤️</div>
-                    </div>
-                </div>
-                <div class="photo-card" onclick="this.classList.toggle('flipped')">
-                    <div class="photo-inner">
-                        <div class="face front"><img src="https://i.ibb.co/3WqP7W8/image6.png"></div>
-                        <div class="face back">هلف الدنيا معاكي وإيدي في إيديكي، يا أحلى حكاية ❤️</div>
+                        <div class="face front"><img src="https://image-resizer-service.com/image?url=https://raw.githubusercontent.com/jojy-project/images/main/6.png" onerror="this.src='https://via.placeholder.com/400?text=Image+6'"></div>
+                        <div class="face back">هلف الدنيا معاكي وإيدي في إيديكي، يا أحلى عروسة في الكون ❤️</div>
                     </div>
                 </div>
             </div>
 
             <button class="btn-main pulse" style="max-width: 280px; margin-top: 80px;" onclick="revealLoveMsg()">آخر مفاجأة.. دوسي هنا 💌</button>
-            
-            <div id="love-msg-box" class="glass-box">
-                <div id="typing-text"></div>
-            </div>
+            <div id="love-msg-box" class="glass-box"><div id="typing-text"></div></div>
         </section>
-
     </div>
 
     <script>
@@ -422,19 +213,17 @@
             const startDate = new Date("2024-01-01T00:00:00"); 
             setInterval(() => {
                 const now = new Date();
-                const diff = now - startDate;
-                document.getElementById('days').innerText = Math.floor(diff/(1000*60*60*24));
-                document.getElementById('hours').innerText = Math.floor((diff/(1000*60*60))%24);
-                document.getElementById('mins').innerText = Math.floor((diff/(1000*60))%60);
-                document.getElementById('secs').innerText = Math.floor((diff/1000)%60);
+                const d = now - startDate;
+                document.getElementById('days').innerText = Math.floor(d/(1000*60*60*24));
+                document.getElementById('hours').innerText = Math.floor((d/(1000*60*60))%24);
+                document.getElementById('mins').innerText = Math.floor((d/(1000*60))%60);
+                document.getElementById('secs').innerText = Math.floor((d/1000)%60);
             }, 1000);
         }
 
         function initScrollReveal() {
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) entry.target.classList.add('active');
-                });
+                entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); });
             }, { threshold: 0.1 });
             document.querySelectorAll('.photo-card').forEach(card => observer.observe(card));
         }
@@ -454,102 +243,6 @@
             }
         }
 
-        // Particle Background
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let pts = [];
-        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.onresize = resize; resize();
-        for(let i=0; i<70; i++) pts.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, s: Math.random()*2, vx: Math.random()*0.4-0.2, vy: Math.random()*0.4-0.2});
-        function anim() {
-            ctx.clearRect(0,0,canvas.width, canvas.height);
-            ctx.fillStyle = "rgba(255, 77, 109, 0.4)";
-            pts.forEach(p => {
-                p.x += p.vx; p.y += p.vy;
-                if(p.x<0 || p.x>canvas.width) p.vx *= -1;
-                if(p.y<0 || p.y>canvas.height) p.vy *= -1;
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, Math.PI*2); ctx.fill();
-            });
-            requestAnimationFrame(anim);
-        }
-        anim();
-    </script>
-</body>
-</html>"></div>
-                        <div class="face back">I love you today, tomorrow, and always. بحبك النهاردة وبكرة وللأبد ❤️</div>
-                    </div>
-                </div>
-                <div class="photo-card" onclick="this.classList.toggle('flipped')">
-                    <div class="photo-inner">
-                        <div class="face front"><img src="https://i.ibb.co/3WqP7W8/image6.png"></div>
-                        <div class="face back">هلف الدنيا معاكي وإيدي في إيديكي، يا أحلى حكاية ❤️</div>
-                    </div>
-                </div>
-            </div>
-
-            <button class="btn-main pulse" style="max-width: 280px; margin-top: 80px;" onclick="revealLoveMsg()">آخر مفاجأة.. دوسي هنا 💌</button>
-            
-            <div id="love-msg-box" class="glass-box">
-                <div id="typing-text"></div>
-            </div>
-        </section>
-
-    </div>
-
-    <script>
-        function unlock() {
-            const pass = document.getElementById('pass').value.toLowerCase();
-            if(pass === 'jojy') {
-                document.getElementById('login-screen').style.transform = 'translateY(-100%)';
-                setTimeout(() => {
-                    document.getElementById('login-screen').style.display = 'none';
-                    const main = document.getElementById('main-content');
-                    main.style.display = 'block';
-                    setTimeout(() => main.style.opacity = '1', 100);
-                    document.getElementById('yt-player').src = "https://www.youtube.com/embed/HcodxmdesfY?autoplay=1";
-                    startClock();
-                    initScrollReveal();
-                }, 1000);
-            } else { alert("حاولي تاني يا قلبي.."); }
-        }
-
-        function startClock() {
-            const startDate = new Date("2024-01-01T00:00:00"); 
-            setInterval(() => {
-                const now = new Date();
-                const diff = now - startDate;
-                document.getElementById('days').innerText = Math.floor(diff/(1000*60*60*24));
-                document.getElementById('hours').innerText = Math.floor((diff/(1000*60*60))%24);
-                document.getElementById('mins').innerText = Math.floor((diff/(1000*60))%60);
-                document.getElementById('secs').innerText = Math.floor((diff/1000)%60);
-            }, 1000);
-        }
-
-        function initScrollReveal() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) entry.target.classList.add('active');
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.photo-card').forEach(card => observer.observe(card));
-        }
-
-        const loveMsg = "يا جوجي.. الهضبة بيقول 'يا أجمل عيون وأحلى عيون'، وأنا بقولك إنك أجمل حلم عشته وبقيت حقيقة. الـ 60 يوم اللي فاتوا كانوا بداية عهد جديد بينا، عهد كله حب وسند. بوعدك إني هفضل جنبك لآخر العمر. بحبك بجنون! ❤️🌹";
-        let charIdx = 0;
-        function revealLoveMsg() {
-            document.getElementById('love-msg-box').style.display = 'block';
-            if(charIdx === 0) typeEffect();
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }
-        function typeEffect() {
-            if(charIdx < loveMsg.length) {
-                document.getElementById('typing-text').innerHTML += loveMsg.charAt(charIdx);
-                charIdx++;
-                setTimeout(typeEffect, 60);
-            }
-        }
-
-        // Particle Background
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let pts = [];
@@ -571,5 +264,3 @@
     </script>
 </body>
 </html>
-
-
