@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم جوجي - الإصدار النهائي ❤️</title>
+    <title>عالم جوجي - الإصدار الخاص ❤️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Dancing+Script:wght@700&display=swap');
 
@@ -78,7 +78,7 @@
         }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* قسم الوعود المقتبس من الصورة */
+        /* قسم الوعود */
         .promises-list {
             width: 100%; max-width: 450px; display: flex; flex-direction: column; gap: 12px; margin: 20px auto;
         }
@@ -90,27 +90,24 @@
             transition: 0.4s;
         }
         .promise-item:hover { background: rgba(255, 77, 109, 0.15); transform: translateX(-10px); }
-        .promise-text { font-size: 1.1rem; color: #fff; }
-        .promise-icon { font-size: 1.4rem; }
 
-        /* معرض الصور التفاعلي */
+        /* معرض الصور مع الصور المرفوعة */
         .gallery {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px; width: 100%; max-width: 1000px; margin-top: 30px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; width: 100%; max-width: 1200px; margin-top: 30px;
         }
-        .photo-card { height: 380px; perspective: 1000px; opacity: 0; transform: translateY(40px); transition: 0.8s all; }
+        .photo-card { height: 400px; perspective: 1000px; opacity: 0; transform: translateY(40px); transition: 0.8s all; }
         .photo-card.active { opacity: 1; transform: translateY(0); }
         .photo-inner { width: 100%; height: 100%; transition: transform 0.7s; transform-style: preserve-3d; cursor: pointer; position: relative; }
         .photo-card.flipped .photo-inner { transform: rotateY(180deg); }
         .face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; overflow: hidden; border: 2px solid var(--primary); }
         .face img { width: 100%; height: 100%; object-fit: cover; }
         .face.back {
-            background: linear-gradient(45deg, var(--primary), #ff758c);
+            background: linear-gradient(135deg, #1a022d, var(--primary));
             transform: rotateY(180deg); display: flex; align-items: center; justify-content: center;
-            padding: 25px; font-size: 1.4rem; text-align: center; font-weight: bold;
+            padding: 30px; font-size: 1.3rem; text-align: center; font-weight: bold; line-height: 1.6;
         }
 
-        /* رسالة الحب النهائية */
         #love-msg-box { display: none; margin-top: 50px; }
         #typing-text { font-size: 1.4rem; line-height: 1.8; color: #fff; text-shadow: 0 0 10px rgba(255,77,109,0.5); }
         
@@ -135,7 +132,6 @@
         <section>
             <div class="glass-box">
                 <h1 style="font-family:'Dancing Script'; font-size: 3rem; color: var(--primary);">Together Forever</h1>
-                
                 <div class="timer-wrap">
                     <div class="t-node"><span id="days">0</span>أيام</div>
                     <div class="t-node"><span id="hours">0</span>ساعة</div>
@@ -165,29 +161,47 @@
         </section>
 
         <section id="gallery-section">
-            <h2 style="margin-bottom:40px; color:var(--accent); font-size: 2.2rem;">ذكرياتنا (اضغطي على الصور) 📸</h2>
+            <h2 style="margin-bottom:40px; color:var(--accent); font-size: 2.2rem;">ألبومنا الخاص (اضغطي على الصور) 📸</h2>
             <div class="gallery">
                 <div class="photo-card" onclick="this.classList.toggle('flipped')">
                     <div class="photo-inner">
-                        <div class="face front"><img src="https://image2url.com/r2/default/images/1770136944262-7844e4b1-1791-441f-be9f-cce55598bcdd.jpeg"></div>
-                        <div class="face back">أجمل صدفة في عمري ❤️</div>
+                        <div class="face front"><img src="https://i.ibb.co/Xf8R8S8/image1.png"></div>
+                        <div class="face back">وعدي ليكي هيفضل للأبد، هفضل سندك وأمانك في كل ثانية ❤️</div>
                     </div>
                 </div>
                 <div class="photo-card" onclick="this.classList.toggle('flipped')">
                     <div class="photo-inner">
-                        <div class="face front"><img src="https://image2url.com/r2/default/images/1770136944262-7844e4b1-1791-441f-be9f-cce55598bcdd.jpeg"></div>
-                        <div class="face back">ضحكتك هي جنة الدنيا 😍</div>
+                        <div class="face front"><img src="https://i.ibb.co/5GvH2r5/image2.png"></div>
+                        <div class="face back">أنا على يقين بأن وجودك بحياتي نعمة عظيمة مستحيل تتعوض ❤️</div>
                     </div>
                 </div>
                 <div class="photo-card" onclick="this.classList.toggle('flipped')">
                     <div class="photo-inner">
-                        <div class="face front"><img src="https://i.pinimg.com/736x/7c/2d/c5/7c2dc5ad638e71bf6b963f8bb5c702da.jpg"></div>
-                        <div class="face back">معاكِ لقيت نفسي بجد 💍</div>
+                        <div class="face front"><img src="https://i.ibb.co/m0LhX1j/image3.png"></div>
+                        <div class="face back">ثم إني وجدتك عمراً فعشت بك.. أنتي الحياة كلها ❤️</div>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="this.classList.toggle('flipped')">
+                    <div class="photo-inner">
+                        <div class="face front"><img src="https://i.ibb.co/L5rK5L0/image4.png"></div>
+                        <div class="face back">فلا هوى بعد هواكِ يُهتوى.. أنتي الأولى والأخيرة ❤️</div>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="this.classList.toggle('flipped')">
+                    <div class="photo-inner">
+                        <div class="face front"><img src="https://i.ibb.co/PznVvW0/image5.png"></div>
+                        <div class="face back">I love you today, tomorrow, and always. بحبك النهاردة وبكرة وللأبد ❤️</div>
+                    </div>
+                </div>
+                <div class="photo-card" onclick="this.classList.toggle('flipped')">
+                    <div class="photo-inner">
+                        <div class="face front"><img src="https://i.ibb.co/3WqP7W8/image6.png"></div>
+                        <div class="face back">هلف الدنيا معاكي وإيدي في إيديكي، يا أحلى حكاية ❤️</div>
                     </div>
                 </div>
             </div>
 
-            <button class="btn-main pulse" style="max-width: 280px; margin-top: 80px;" onclick="revealLoveMsg()">هنا كلمة السر الأخيرة.. دوسي 💌</button>
+            <button class="btn-main pulse" style="max-width: 280px; margin-top: 80px;" onclick="revealLoveMsg()">آخر مفاجأة.. دوسي هنا 💌</button>
             
             <div id="love-msg-box" class="glass-box">
                 <div id="typing-text"></div>
@@ -197,7 +211,6 @@
     </div>
 
     <script>
-        // 1. وظيفة الدخول
         function unlock() {
             const pass = document.getElementById('pass').value.toLowerCase();
             if(pass === 'jojy') {
@@ -207,19 +220,15 @@
                     const main = document.getElementById('main-content');
                     main.style.display = 'block';
                     setTimeout(() => main.style.opacity = '1', 100);
-                    
-                    // تشغيل الفيديو (عمرو دياب - يا أجمل عيون)
                     document.getElementById('yt-player').src = "https://www.youtube.com/embed/HcodxmdesfY?autoplay=1";
-                    
                     startClock();
                     initScrollReveal();
                 }, 1000);
             } else { alert("حاولي تاني يا قلبي.."); }
         }
 
-        // 2. العداد الزمني (تاريخ البداية)
         function startClock() {
-            const startDate = new Date("2024-01-01T00:00:00"); // عدل التاريخ هنا
+            const startDate = new Date("2024-01-01T00:00:00"); 
             setInterval(() => {
                 const now = new Date();
                 const diff = now - startDate;
@@ -230,18 +239,15 @@
             }, 1000);
         }
 
-        // 3. أنيميشن الصور عند السكرول
         function initScrollReveal() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if(entry.isIntersecting) entry.target.classList.add('active');
                 });
             }, { threshold: 0.1 });
-            
             document.querySelectorAll('.photo-card').forEach(card => observer.observe(card));
         }
 
-        // 4. رسالة الحب النهائية (Typing Effect)
         const loveMsg = "يا جوجي.. الهضبة بيقول 'يا أجمل عيون وأحلى عيون'، وأنا بقولك إنك أجمل حلم عشته وبقيت حقيقة. الـ 60 يوم اللي فاتوا كانوا بداية عهد جديد بينا، عهد كله حب وسند. بوعدك إني هفضل جنبك لآخر العمر. بحبك بجنون! ❤️🌹";
         let charIdx = 0;
         function revealLoveMsg() {
@@ -257,7 +263,7 @@
             }
         }
 
-        // 5. خلفية الجزيئات (Particles)
+        // Particle Background
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let pts = [];
@@ -279,9 +285,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
