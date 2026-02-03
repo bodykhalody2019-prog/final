@@ -28,7 +28,6 @@
             z-index: -1;
         }
 
-        /* شاشة الدخول */
         #login-screen {
             position: fixed; inset: 0; background: var(--dark-bg);
             display: flex; justify-content: center; align-items: center; z-index: 10000;
@@ -53,7 +52,6 @@
             cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s;
         }
 
-        /* المحتوى الرئيسي */
         #main-content { display: none; padding: 20px; }
 
         section {
@@ -67,7 +65,6 @@
             width: 100%; max-width: 700px; text-align: center;
         }
 
-        /* معرض الصور */
         .gallery {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px; width: 100%; margin-top: 20px;
@@ -95,7 +92,7 @@
         <div class="login-card">
             <h2 style="margin-bottom:20px; font-family:'Dancing Script'; font-size: 2.5rem; color: var(--primary);">Jojy's World</h2>
             <input type="password" id="pass" placeholder="كلمة السر (jojy)">
-            <button class="btn-main" onclick="unlock()">فتح القفل ❤️</button>
+            <button class="btn-main" onclick="unlock()">فتح القفل واستماع الهضبة ❤️</button>
         </div>
     </div>
 
@@ -110,18 +107,18 @@
                     <div class="t-node"><span id="secs">0</span>ثانية</div>
                 </div>
                 <div style="margin-top:20px;">
-                    <p style="margin-bottom:10px;">🎧 بنسمع دلوقتي: <b>عمرو دياب - يا أجمل عيون</b></p>
+                    <p style="margin-bottom:10px;">🎧 عمرو دياب - يا أجمل عيون</p>
                     <audio id="music" controls loop>
-                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                        <source src="https://files.catbox.moe/pvhv3x.mp3" type="audio/mpeg">
                     </audio>
                 </div>
             </div>
         </section>
 
         <section>
-            <h2 style="margin-bottom:20px; color:var(--accent);">ذكرياتنا 📸</h2>
+            <h2 style="margin-bottom:20px; color:var(--accent);">ألبوم ذكرياتنا 📸</h2>
             <div class="gallery">
-                <div class="img-card"><img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=400"></div>
+                <div class="img-card"><img src="https://images.unsplash.com/photo-1516589174184-c685266d43d1?w=400"></div>
                 <div class="img-card"><img src="https://images.unsplash.com/photo-1518199266791-c699991ff80a?w=400"></div>
                 <div class="img-card"><img src="https://images.unsplash.com/photo-1522673607200-1648832cee98?w=400"></div>
                 <div class="img-card"><img src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=400"></div>
@@ -130,14 +127,13 @@
 
         <section>
             <div class="glass-box">
-                <h2 style="color:var(--primary);">رسالة لكِ 💌</h2>
+                <h2 style="color:var(--primary);">رسالتي الخاصة 💌</h2>
                 <div id="typing-box"></div>
             </div>
         </section>
     </div>
 
     <script>
-        // 1. نظام الدخول
         function unlock() {
             const p = document.getElementById('pass').value.toLowerCase();
             if(p === 'jojy') {
@@ -145,12 +141,8 @@
                 setTimeout(() => {
                     document.getElementById('login-screen').style.display = 'none';
                     document.getElementById('main-content').style.display = 'block';
-                    
-                    // تشغيل الموسيقى
                     const audio = document.getElementById('music');
-                    audio.src = "https://files.catbox.moe/pvhv3x.mp3"; // رابط عمرو دياب
-                    audio.play().catch(() => console.log("تحتاج ضغط يدوي للموسيقى"));
-                    
+                    audio.play();
                     startTimer();
                     startTyping();
                 }, 800);
@@ -159,7 +151,6 @@
             }
         }
 
-        // 2. العداد الحقيقي
         function startTimer() {
             const start = new Date("2024-01-01T00:00:00"); 
             setInterval(() => {
@@ -172,8 +163,7 @@
             }, 1000);
         }
 
-        // 3. تأثير الكتابة
-        const text = "يا جوجي.. الـ 60 يوم اللي فاتوا كانوا أجمل أيام حياتي. على صوت عمرو دياب بقولك إنك 'أجمل عيون' شفتها، وإنك الرزق اللي هحافظ عليه طول عمري. بحبك للأبد! ❤️";
+        const text = "يا جوجي.. زي ما عمرو دياب بيقول 'يا أجمل عيون وأحلى عيون'، أنتي فعلاً أجمل حاجة حصلت في حياتي. الـ 60 يوم اللي فاتوا دول كانوا مجرد بداية لحكاية حب كبيرة هنعيشها مع بعض. أنتي الرزق والسند، وبحبك أكتر من أي حاجة في الدنيا! ❤️🌹";
         let idx = 0;
         function startTyping() {
             if(idx < text.length) {
@@ -183,27 +173,12 @@
             }
         }
 
-        // 4. الخلفية المتحركة
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let pts = [];
-        
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.onresize = resize; resize();
-
-        for(let i=0; i<80; i++) {
-            pts.push({
-                x: Math.random()*canvas.width,
-                y: Math.random()*canvas.height,
-                s: Math.random()*2,
-                vx: Math.random()*1-0.5,
-                vy: Math.random()*1-0.5
-            });
-        }
-
+        for(let i=0; i<80; i++) pts.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, s: Math.random()*2, vx: Math.random()*1-0.5, vy: Math.random()*1-0.5});
         function anim() {
             ctx.clearRect(0,0,canvas.width, canvas.height);
             ctx.fillStyle = "rgba(255, 77, 109, 0.6)";
@@ -211,9 +186,7 @@
                 p.x += p.vx; p.y += p.vy;
                 if(p.x<0 || p.x>canvas.width) p.vx *= -1;
                 if(p.y<0 || p.y>canvas.height) p.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.s, 0, Math.PI*2);
-                ctx.fill();
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, Math.PI*2); ctx.fill();
             });
             requestAnimationFrame(anim);
         }
